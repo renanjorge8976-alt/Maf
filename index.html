@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Biocombustível de algas marinhas: estudo acadêmico e análise de sustentabilidade e viabilidade econômica."
+  />
+  <title>Biocombustível de Algas Marinhas</title>
+  <style>
+    :root {
+      --bg: #f3f6fa;
+      --panel: #ffffff;
+      --panel-soft: #f8fafc;
+      --primary: #123d69;
+      --primary-2: #1a5a9c;
+      --accent: #2e7d6f;
+      --accent-soft: #eaf6f2;
+      --text: #1d2a36;
+      --muted: #5d6b78;
+      --line: #dfe7ee;
+      --shadow: rgba(18, 61, 105, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: linear-gradient(135deg, #112b45, var(--primary));
+      color: #fff;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand small {
+      display: block;
+      font-size: 0.68rem;
+      opacity: 0.8;
+      letter-spacing: 0.18em;
+      margin-top: 4px;
+    }
+
+    .nav { display: flex; gap: 18px; flex-wrap: wrap; }
+
+    .nav a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .nav a:hover { color: #fff; }
+
+    .hero {
+      background: linear-gradient(135deg, #0f2541 0%, var(--primary) 50%, var(--primary-2) 100%);
+      color: #fff;
+      padding: 90px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.09), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(46,125,111,0.18), transparent 32%);
+      pointer-events: none;
+    }
+
+    .hero .container {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 3vw, 4rem);
+      line-height: 1.12;
+      letter-spacing: -0.05em;
+      margin-bottom: 14px;
+      max-width: 620px;
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      line-height: 1.8;
+      max-width: 620px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .hero-box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 18px 40px rgba(2, 13, 25, 0.2);
+    }
+
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .stat:last-child { border-bottom: none; padding-bottom: 0; }
+    .stat strong { display: block; font-size: 1.55rem; margin-bottom: 4px; }
+    .stat span { color: rgba(255,255,255,0.85); font-size: 0.88rem; }
+
+    .stat-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      font-size: 1.2rem;
+    }
+
+    main { padding: 60px 0 80px; }
+    .section { margin-bottom: 28px; }
+    .section-header { margin-bottom: 18px; }
+
+    .section-header h2 {
+      color: var(--primary);
+      font-size: clamp(1.8rem, 2vw, 2.5rem);
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .section-header p { color: var(--muted); max-width: 750px; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px 24px;
+      box-shadow: 0 10px 26px var(--shadow);
+    }
+
+    .card h3 { color: var(--primary); font-size: 1.3rem; margin-bottom: 10px; }
+    .card p { color: var(--text); margin-bottom: 12px; }
+    .card ul { margin: 12px 0 0 20px; }
+    .card li { margin-bottom: 10px; color: var(--text); }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .feature {
+      background: linear-gradient(180deg, #fff, #f7fafc);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px 18px;
+      box-shadow: 0 8px 18px rgba(18, 61, 105, 0.04);
+    }
+
+    .feature .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .feature h4 { color: var(--primary); margin-bottom: 8px; font-size: 1.08rem; }
+    .feature p { color: var(--muted); font-size: 0.94rem; line-height: 1.6; }
+
+    .quote {
+      background: linear-gradient(135deg, rgba(18,61,105,0.05), rgba(46,125,111,0.06));
+      border-left: 5px solid var(--accent);
+      border-radius: 14px;
+      padding: 20px 22px;
+      color: var(--primary);
+      font-style: italic;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    footer {
+      background: #0f1d2d;
+      color: rgba(255,255,255,0.8);
+      padding: 28px 0 32px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero .container, .grid-2 { grid-template-columns: 1fr; }
+      .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 600px) {
+      .nav { display: none; }
+      .features { grid-template-columns: 1fr; }
+      .topbar .container { justify-content: center; }
+      .hero { padding-top: 70px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="brand">
+        Biocombustível
+        <small>Algas Marinhas</small>
+      </div>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#resumo">Resumo</a>
+        <a href="#introducao">Introdução</a>
+        <a href="#beneficios">Benefícios</a>
+        <a href="#metodologia">Metodologia</a>
+        <a href="#viabilidade">Viabilidade</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div>
+        <div class="eyebrow">Energia renovável</div>
+        <h1>Biocombustível de Algas Marinhas</h1>
+        <p>
+          A produção de biocombustível a partir de algas e microalgas como modelo de
+          negócio sustentável no setor de energias renováveis, com foco em eficiência
+          ambiental, inovação tecnológica e viabilidade econômica.
+        </p>
+      </div>
+      <div class="hero-box" aria-label="Principais características">
+        <div class="stat">
+          <div><strong>Alta</strong><span>produtividade biológica</span></div>
+          <div class="stat-icon" aria-hidden="true">🌿</div>
+        </div>
+        <div class="stat">
+          <div><strong>CO₂</strong><span>sequestro durante o cultivo</span></div>
+          <div class="stat-icon" aria-hidden="true">🌍</div>
+        </div>
+        <div class="stat">
+          <div><strong>Sustentável</strong><span>potencial energético renovável</span></div>
+          <div class="stat-icon" aria-hidden="true">⚡</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+      <section id="resumo" class="section">
+        <div class="section-header">
+          <h2>Resumo</h2>
+          <p>
+            A busca por fontes de energia renováveis e sustentáveis tem se tornado cada
+            vez mais importante diante do crescimento populacional, do aumento do consumo
+            energético e dos impactos ambientais causados pelos combustíveis fósseis.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            Este trabalho analisa a viabilidade da produção de biocombustíveis a partir
+            de algas marinhas, considerando os aspectos ambientais, econômicos e
+            administrativos envolvidos nesse processo. A proposta demonstra que a
+            bioenergia derivada de biomassa algal pode contribuir para a transição
+            energética com menor impacto ambiental e maior potencial de inovação.
+          </p>
+        </div>
+      </section>
+
+      <section id="introducao" class="section">
+        <div class="section-header">
+          <h2>Introdução</h2>
+          <p>Os combustíveis fósseis são recursos finitos e contribuem de forma significativa para a emissão de gases de efeito estufa.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Contexto ambiental</h3>
+            <p>
+              O petróleo, o carvão mineral e o gás natural são fontes de energia altamente
+              poluentes e dependentes de processos de extração que geram impactos
+              ambientais relevantes. Nesse cenário, torna-se necessário ampliar a matriz
+              energética com alternativas menos agressivas ao meio ambiente.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Alternativa sustentável</h3>
+            <p>
+              Entre as diversas matérias-primas disponíveis, as algas marinhas se
+              destacam por apresentar rápido crescimento, alta produtividade e potencial
+              de utilização em sistemas sustentáveis. Sua exploração representa uma
+              opção promissora no campo dos biocombustíveis.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="beneficios" class="section">
+        <div class="section-header">
+          <h2>Benefícios das Microalgas e Algas Vermelhas</h2>
+          <p>As microalgas e as algas vermelhas apresentam vantagens ambientais, tecnológicas e econômicas relevantes para a produção de energia renovável.</p>
+        </div>
+        <div class="features">
+          <article class="feature">
+            <div class="icon" aria-hidden="true">⚡</div>
+            <h4>Crescimento rápido</h4>
+            <p>Algumas espécies se desenvolvem rapidamente em condições controladas.</p>
+          </article>
+          <article class="feature">
+            <div class="icon" aria-hidden="true">🌬️</div>
+            <h4>Sequestro de CO₂</h4>
+            <p>Utilizam dióxido de carbono durante a fotossíntese.</p>
+          </article>
+          <article class="feature">
+            <div class="icon" aria-hidden="true">💧</div>
+            <h4>Uso de águas salinas</h4>
+            <p>Podem ser cultivadas em águas salgadas ou salobras, reduzindo a competição direta com culturas alimentares.</p>
+          </article>
+          <article class="feature">
+            <div class="icon" aria-hidden="true">📈</div>
+            <h4>Alta produtividade</h4>
+            <p>Podem acumular lipídios, proteínas e carboidratos de interesse industrial.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="metodologia" class="section">
+        <div class="section-header">
+          <h2>Metodologia</h2>
+          <p>O processo de produção de biocombustíveis a partir de algas envolve etapas técnicas, ambientais e econômicas.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Cultivo</h3>
+            <p>
+              As algas podem ser classificadas em macroalgas e microalgas. O cultivo pode
+              ocorrer em sistemas abertos, como lagoas e tanques, ou em sistemas fechados,
+              conhecidos como fotobiorreatores.
+            </p>
+            <ul>
+              <li>Sistemas abertos: menor complexidade e menor custo inicial.</li>
+              <li>Fotobiorreatores: maior controle ambiental, com investimento mais elevado.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Colheita e transformação</h3>
+            <p>
+              Após o crescimento, a biomassa é separada do meio líquido. Em seguida, os
+              compostos de interesse podem ser extraídos e processados para a produção de
+              combustíveis, como biodiesel, bioetanol e biogás, conforme a matéria-prima
+              e a rota tecnológica adotadas.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="viabilidade" class="section">
+        <div class="section-header">
+          <h2>Viabilidade Ambiental e Econômica</h2>
+          <p>O desenvolvimento da bioenergia algal exige equilíbrio entre eficiência técnica, sustentabilidade ambiental e gestão financeira.</p>
+        </div>
+        <div class="card">
+          <p>
+            O cultivo de algas pode contribuir para a bioeconomia e, em determinadas
+            condições, para a captura de CO₂ e o tratamento de efluentes. Entretanto, os
+            resultados ambientais dependem do sistema de cultivo, da fonte de energia e
+            dos insumos utilizados. Entre os desafios estão o consumo de energia, a
+            demanda por água e nutrientes e os custos de colheita e processamento.
+          </p>
+          <p>
+            Para avaliar a viabilidade econômica, são necessários planejamento financeiro,
+            controle de custos e análise das condições locais de produção. A gestão
+            eficiente do processo é essencial para determinar se a tecnologia pode se
+            tornar um empreendimento sustentável e competitivo.
+          </p>
+          <div class="quote">
+            “A transição para fontes renováveis depende não apenas da tecnologia, mas
+            também da capacidade de conciliar sustentabilidade, eficiência e gestão estratégica.”
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <div>Trabalho apresentado por alunos do Colégio Estadual Alípio Franca.</div>
+      <div>Biocombustível de Algas Marinhas • Salvador-BA • 03/03/2026</div>
+    </div>
+  </footer>
+</body>
+</html>
